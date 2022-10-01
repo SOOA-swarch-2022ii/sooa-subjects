@@ -1,22 +1,25 @@
 package models
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type Subject struct {
-	Id                string   `bson:"id,omitempty" json:"id,omitempty"`
-	Name              string   `bson:"name,omitempty" json:"name,omitempty"`
-	Vigency           bool     `bson:"vigency,omitempty" json:"vigency,omitempty"`
-	Level             string   `bson:"level,omitempty" json:"level,omitempty"`
-	Credits           int      `bson:"credits,omitempty" json:"credits,omitempty"`
-	Campus            string   `bson:"campus,omitempty" json:"campus,omitempty"`
-	Faculty           string   `bson:"faculty,omitempty" json:"faculty,omitempty"`
-	Department        string   `bson:"department,omitempty" json:"subfaculty,omitempty"`
-	BasicAcademicUnit string   `bson:"basic_academic_unit,omitempty" json:"basic_academic_unit,omitempty"`
-	Academic_level    string   `bson:"academic_level,omitempty" json:"academic_level,omitempty"`
-	Content           []string `bson:"content,omitempty" json:"content,omitempty"`
+	Id                primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
+	Code              string             `bson:"id,omitempty" json:"id,omitempty"`
+	Name              string             `bson:"name,omitempty" json:"name,omitempty"`
+	Vigency           bool               `bson:"vigency,omitempty" json:"vigency,omitempty"`
+	Level             string             `bson:"level,omitempty" json:"level,omitempty"`
+	Credits           int                `bson:"credits,omitempty" json:"credits,omitempty"`
+	Campus            string             `bson:"campus,omitempty" json:"campus,omitempty"`
+	Faculty           string             `bson:"faculty,omitempty" json:"faculty,omitempty"`
+	Department        string             `bson:"department,omitempty" json:"department,omitempty"`
+	BasicAcademicUnit string             `bson:"basic_academic_unit,omitempty" json:"basic_academic_unit,omitempty"`
+	Academic_level    string             `bson:"academic_level,omitempty" json:"academic_level,omitempty"`
+	Content           []string           `bson:"content,omitempty" json:"content,omitempty"`
 }
 
 type Course struct {
-	Id       string `bson:"_id,omitempty" json:"_id,omitempty"`
-	Subject  string `bson:"subject,omitempty" json:"subject,omitempty"`
+	Id       primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
+	Subject  string             `bson:"subject,omitempty" json:"subject,omitempty"`
 	Schedule []struct {
 		Day      string `bson:"day,omitempty" json:"day,omitempty"`
 		StartH   string `bson:"start_h,omitempty" json:"start_h,omitempty"`
