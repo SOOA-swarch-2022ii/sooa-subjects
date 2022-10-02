@@ -4,7 +4,7 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Subject struct {
 	Id                primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
-	Code              string             `bson:"id,omitempty" json:"id,omitempty"`
+	Code              string             `bson:"code,omitempty" json:"code,omitempty"`
 	Name              string             `bson:"name,omitempty" json:"name,omitempty"`
 	Vigency           bool               `bson:"vigency,omitempty" json:"vigency,omitempty"`
 	Level             string             `bson:"level,omitempty" json:"level,omitempty"`

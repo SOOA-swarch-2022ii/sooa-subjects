@@ -65,10 +65,9 @@ func NewSubject(response http.ResponseWriter, request *http.Request) {
 
 }
 
+func NewCourse(response http.ResponseWriter, request *http.Request) {
 
-func NewCourse(response http.ResponseWriter, request *http.Request)          {
-
-		var curso models.Course
+	var curso models.Course
 	response.Header().Set("content-type", "application/json")
 	err := json.NewDecoder(request.Body).Decode(&curso)
 
@@ -90,7 +89,6 @@ func NewCourse(response http.ResponseWriter, request *http.Request)          {
 
 	response.WriteHeader(http.StatusOK)
 	response.Write([]byte(`{"curso creado"}`))
-
 
 }
 
@@ -146,7 +144,7 @@ func GetsbCode(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("buscando código: " + id)
 	var asignatura models.Subject
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	filtro := bson.D{{"id", id}}
+	filtro := bson.D{{"code", id}}
 	err := Asigs_handler.FindOne(ctx, filtro).Decode(&asignatura)
 
 	if err != nil {
@@ -185,7 +183,29 @@ func GetcoID(response http.ResponseWriter, request *http.Request) {
 	json.NewEncoder(response).Encode(curso)
 }
 
-/*func GetcoSB(response http.ResponseWriter, request *http.Request)            {}
+func GetcoSB(response http.ResponseWriter, request *http.Request) {
+	response.Header().Set("content-type", "application/json")
+
+	params := mux.Vars(request)
+	var sb = params["subject"]
+	var cursos []models.Course
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	filtro := bson.D{{"subject", sb}}
+	cursor, err := Curso_handler.Find(ctx, filtro)
+	if err != nil {
+		response.WriteHeader(http.StatusInternalServerError)
+		response.Write([]byte(`{"algo salio mal en GetcoSB":` + err.Error() + ` "}`))
+		return
+	}
+	if err = cursor.All(ctx, &cursos); err != nil {
+		response.WriteHeader(http.StatusInternalServerError)
+		response.Write([]byte(`{"algo salio mal en GetcoSB":` + err.Error() + ` "}`))
+		return
+	}
+	fmt.Println("se encontraron: ", len(cursos), " cursos")
+	json.NewEncoder(response).Encode(cursos)
+}
+
 func GetcoSBSemester(response http.ResponseWriter, request *http.Request)    {}
 func GetcoSchedule(response http.ResponseWriter, request *http.Request)      {}
 func GetcoStudeent(response http.ResponseWriter, request *http.Request)      {}
@@ -196,4 +216,3 @@ func UpdateSB(response http.ResponseWriter, request *http.Request)           {}
 func UpdateCO(response http.ResponseWriter, request *http.Request)           {}
 func DeleteSB(response http.ResponseWriter, request *http.Request)           {}
 func DeleteCO(response http.ResponseWriter, request *http.Request)           {}
-*/

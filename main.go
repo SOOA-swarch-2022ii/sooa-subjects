@@ -8,7 +8,6 @@ import (
 
 func main() {
 	fmt.Println("Inicializando microservicio sooa_subjects_ms")
-	//enrutador := mux.NewRouter()
 	enrutador := routes.Routes()
 	http.ListenAndServe(":6666", enrutador)
 }

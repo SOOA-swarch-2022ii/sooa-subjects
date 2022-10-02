@@ -11,7 +11,7 @@ func Routes() *mux.Router {
 	router := mux.NewRouter()
 	router.HandleFunc("/sooa-sb-ms/new-subject", control.NewSubject).Methods("POST")
 	router.HandleFunc("/sooa-sb-ms/new-course", control.NewCourse).Methods("POST")
-	 
+
 	router.HandleFunc("/sooa-sb-ms/subjects/name={name}", control.GetsbName).Methods("GET")
 	router.HandleFunc("/sooa-sb-ms/subjects/id={id}", control.GetsbID).Methods("GET")
 	router.HandleFunc("/sooa-sb-ms/subjects/code={code}", control.GetsbCode).Methods("GET")
@@ -22,8 +22,8 @@ func Routes() *mux.Router {
 	*/
 	router.HandleFunc("/sooa-sb-ms/courses/all", control.CursosResponseTodos).Methods("GET")
 	router.HandleFunc("/sooa-sb-ms/courses/id={id}", control.GetcoID).Methods("GET")
-
-	/*	router.HandleFunc("/sooa-sb-ms/courses/sb={subject}", control.GetcoSB).Methods("GET")
+	router.HandleFunc("/sooa-sb-ms/courses/sb={subject}", control.GetcoSB).Methods("GET")
+	/*
 		router.HandleFunc("/sooa-sb-ms/courses/sb={subject}/sm={semester}", control.GetcoSBSemester).Methods("GET")
 		router.HandleFunc("/sooa-sb-ms/courses/d={day}/ti={ti}/tf={tf}", control.GetcoSchedule).Methods("GET")
 
