@@ -27,9 +27,10 @@ func Routes() *mux.Router {
 		router.HandleFunc("/sooa-sb-ms/courses/sb={subject}/sm={semester}", control.GetcoSBSemester).Methods("GET")
 		router.HandleFunc("/sooa-sb-ms/courses/d={day}/ti={ti}/tf={tf}", control.GetcoSchedule).Methods("GET")
 
-		router.HandleFunc("/sooa-sb-ms/courses/{student}", control.GetcoStudeent).Methods("GET")
-		router.HandleFunc("/sooa-sb-ms/courses/{professor}", control.GetcoProff).Methods("GET")
-		router.HandleFunc("/sooa-sb-ms/courses/{professor}/{semester}", control.GetcoProffSemester).Methods("GET")
+	*/
+	router.HandleFunc("/sooa-sb-ms/courses/st={student}", control.GetcoStudent).Methods("GET")
+	router.HandleFunc("/sooa-sb-ms/courses/profe={professor}", control.GetcoProfe).Methods("GET")
+	/*	router.HandleFunc("/sooa-sb-ms/courses/{professor}/{semester}", control.GetcoProffSemester).Methods("GET")
 
 		router.HandleFunc("/sooa-sb-ms/courses/{location}", control.GetcoLocation).Methods("GET")
 
