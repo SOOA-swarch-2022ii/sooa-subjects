@@ -14,6 +14,25 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+func SbTodos(response http.ResponseWriter, request *http.Request) {
+	response.Header().Set("content-type", "application/json")
+	var materias []models.Subject
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+
+	cursor, err := Curso_handler.Find(ctx, bson.M{})
+	if err != nil {
+		response.WriteHeader(http.StatusInternalServerError)
+		response.Write([]byte(`{"algo salio mal en materias.Find":` + err.Error() + ` "}`))
+		return
+	}
+	if err = cursor.All(ctx, &materias); err != nil {
+		response.WriteHeader(http.StatusInternalServerError)
+		response.Write([]byte(`{"algo salio mal en materias.all":` + err.Error() + ` "}`))
+		return
+	}
+	json.NewEncoder(response).Encode(materias)
+}
+
 func NewSubject(response http.ResponseWriter, request *http.Request) {
 	var materia models.Subject
 	response.Header().Set("content-type", "application/json")

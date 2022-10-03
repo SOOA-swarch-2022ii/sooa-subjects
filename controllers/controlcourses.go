@@ -20,7 +20,7 @@ var Cliente_mongo = db.Dbconnect()
 var Asigs_handler *mongo.Collection = Cliente_mongo.Database("SOOA_subjects_db").Collection("subjects")
 var Curso_handler *mongo.Collection = Cliente_mongo.Database("SOOA_subjects_db").Collection("courses")
 
-func CursosResponseTodos(response http.ResponseWriter, request *http.Request) {
+func CoTodos(response http.ResponseWriter, request *http.Request) {
 	response.Header().Set("content-type", "application/json")
 	var cursos []models.Course
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
