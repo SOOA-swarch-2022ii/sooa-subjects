@@ -9,23 +9,19 @@ http://localhost:PORT/sooa-sb-ms
 - GET  /subjects/name={name}
 - GET  /subjects/id={id}
 - GET  /subjects/code={code}
+- GET  /subjects/cam={campus}/fac={faculty}
+
 - GET  /courses/all
 - GET  /courses/id={id}
-- GET  /courses/sb={subject_code}
-- GET  /courses/st={student}
+- GET  /courses/sb={subject}
+- GET  /courses/sb={subject}/sm={semester}
 - GET  /courses/profe={professor}
-
-
+- GET  /courses/profe={professor}/sm={semester}
+- GET  /courses/st={student}
+- GET  /courses/st={student}/sm={semester}
+- GET  /courses/sb={subject}/sm={semester}/sch/d={day}
+- GET  /courses/location/house={house}
+- GET  /courses/semester={sm}/d={day}/ti={ti}/tf={tf}
 
 ### por hacer:
-- PUT /courses/id={id}/st={student}/add
-- PUT /courses/id={id}/st={student}/remove
 
-- GET  /courses/st={student}/sm={semester}
-- GET  /subjects/cam={campus}
-- GET  /subjects/cam={campus}/fac={faculty}
-- GET  /subjects/cam={campus}/fac={faculty}/bau={bau}
-- GET  /courses/sb={subject}/sm={semester}
-- GET  /courses/d={day}/ti={ti}/tf={tf}
-- GET  /courses/profe={professor}/sem={semester}
-- GET  /courses/{location}

@@ -125,7 +125,30 @@ func GetsbCode(response http.ResponseWriter, request *http.Request) {
 }
 
 func GetsbCAM(response http.ResponseWriter, request *http.Request)      {}
-func GetsbCAMFA(response http.ResponseWriter, request *http.Request)    {}
+func GetsbCAMFA(response http.ResponseWriter, request *http.Request)    {
+	response.Header().Set("content-type", "application/json")
+
+	params := mux.Vars(request)
+	var campus = params["campus"]
+	var facultad = params["faculty"]
+	var cursos []models.Subject
+
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	filtro := bson.D{{"campus", campus},{"faculty",facultad}}
+	cursor, err := Asigs_handler.Find(ctx, filtro)
+	if err != nil {
+		response.WriteHeader(http.StatusInternalServerError)
+		response.Write([]byte(`{"algo salio mal en Getcostudent":` + err.Error() + ` "}`))
+		return
+	}
+	if err = cursor.All(ctx, &cursos); err != nil {
+		response.WriteHeader(http.StatusInternalServerError)
+		response.Write([]byte(`{"algo salio mal al leer los datos getcostudent":` + err.Error() + ` "}`))
+		return
+	}
+	fmt.Println("se encontraron: ", len(cursos), " asignaturas ofertadas en ", campus, " de la facultad ",facultad)
+	json.NewEncoder(response).Encode(cursos)
+}
 func GetsbCAMFABAU(response http.ResponseWriter, request *http.Request) {}
 func UpdateSB(response http.ResponseWriter, request *http.Request)      {}
 func DeleteSB(response http.ResponseWriter, request *http.Request)      {}
