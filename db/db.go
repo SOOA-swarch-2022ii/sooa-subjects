@@ -30,7 +30,5 @@ func Dbconnect() *mongo.Client {
 	}
 	fmt.Println("⛁ Connected to Database")
 
-	
-
 	return client
 }

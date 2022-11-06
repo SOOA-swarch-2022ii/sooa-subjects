@@ -1,6 +1,6 @@
 ## sooa-subjects
 Componente encargado de la gestión de las asignaturas y los cursos asociados a dichas asignaturas
-http://localhost:PORT/sooa-sb-ms
+http://localhost:PORT
 
 ### hechos:
 - POST /new-subject
@@ -24,4 +24,9 @@ http://localhost:PORT/sooa-sb-ms
 - GET  /courses/semester={sm}/d={day}/ti={ti}/tf={tf}
 
 ### por hacer:
+docker build --tag sooa-subjects .
+docker tag sooa-subjects degarzonm/sooa-subjects-ms:v1.1
+docker push degarzonm/sooa-subjects-ms:v1.1
+docker run --publish -e URI= 6666:6666 sooa-subjects
+
 

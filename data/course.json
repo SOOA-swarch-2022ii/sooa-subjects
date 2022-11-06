@@ -1,23 +1,19 @@
-
 {
-    "subject":"20221001",
+    "subject":"112233",
     "schedule":[
-        {
-        "day":"wednesday","start_h":"09:00","end_h":"11:00","location":"401-205"
-        },
-        {
-        "day":"thursday","start_h":"09:00","end_h":"11:00","location":"401-205"
-        }
+        {"day":"monday","start_h":"14:00","end_h":"17:00","location":"401-105"},
+         {"day":"thursday","start_h":"14:00","end_h":"17:00","location":"401-105"}
     ],
-        "academic_semester":"2022-2",
-        "start_date":"08/08/2022",
-        "end_date":"03/12/2022",
-        "group_number":1,
-        "professors":["jjgiraldog"],
-        "places":20,
-        "students_record":
-        [
-            {"student":"degarzonm","grades":[4.7,4.1,4]},
-            {"student":"aabonillad","grades":[4.2,4.6,4.9]}
-        ]
-    }
+    "academic_semester":"2021-2",
+    "start_date":"08/08/2021",
+    "end_date":"03/12/2021",
+    "group_number":1,
+    "professors":["afrodriguezf"],
+    "places":25,
+    "students_record":[
+        {"student":"dirreno","grades":[4.7,4.1,4]},
+        {"student":"degarzonm","grades":[4.7,4.1,4]},
+        {"student":"jibanezs","grades":[4.7,4.1,4]},
+        {"student":"eladinof","grades":[4.7,4.1,4]}
+    ]
+}

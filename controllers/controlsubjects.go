@@ -19,7 +19,7 @@ func SbTodos(response http.ResponseWriter, request *http.Request) {
 	var materias []models.Subject
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 
-	cursor, err := Curso_handler.Find(ctx, bson.M{})
+	cursor, err := Asigs_handler.Find(ctx, bson.M{})
 	if err != nil {
 		response.WriteHeader(http.StatusInternalServerError)
 		response.Write([]byte(`{"algo salio mal en materias.Find":` + err.Error() + ` "}`))
