@@ -27,6 +27,6 @@ http://localhost:PORT
 docker build --tag sooa-subjects .
 docker tag sooa-subjects degarzonm/sooa-subjects-ms:v1.1
 docker push degarzonm/sooa-subjects-ms:v1.1
-docker run --publish -e URI= 6666:6666 sooa-subjects
+docker run -p 6666:6666 sooa-subjects
 
 

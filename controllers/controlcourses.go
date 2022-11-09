@@ -16,7 +16,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var Cliente_mongo = db.Dbconnect()
+var Cliente_mongo = db.ConnectDB()
 var Asigs_handler *mongo.Collection = Cliente_mongo.Database("SOOA_subjects_db").Collection("subjects")
 var Curso_handler *mongo.Collection = Cliente_mongo.Database("SOOA_subjects_db").Collection("courses")
 
